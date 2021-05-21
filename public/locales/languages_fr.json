@@ -1,0 +1,261 @@
+{
+  "app": {
+    "name": "Keep Track - Maison l'Éclaircie"
+  },
+  "navigation": {
+    "clients" : "Participants",
+    "formTemplates": "Formulaires",
+    "accounts" : "Comptes utilisateurs",
+    "dashboard": "Tableau de bord",
+    "reports": "Rapports",
+    "administration": "Administration",
+    "quit": "Me déconnecter",
+    "changePassword": "Modifier mon mot de passe",
+    "generateReport": "Rapports",
+    "admin": "Administration",
+    "formShortcuts": "Menus"
+  },
+  "login": {
+    "username": "Code utilisateur",
+    "password": "Mot de passe",
+    "authenticate": "Authentifier"
+  },
+  "dashboard": {
+    "my-clients": "Mes participants suivis",
+    "lastName": "Nom",
+    "firstName": "Prénom",
+    "clientType": "Type de dossier",
+    "notifications": "Notifications",
+    "newNotes": "{{count}} nouvelle note évolutive",
+    "newNotes_plural": "{{count}} nouvelles notes évolutives",
+    "updatedNotes": "{{count}} note évolutive modifiée",
+    "updatedNotes_plural": "{{count}} notes évolutives modifiées",
+    "newDocuments": "{{count}} nouveau document",
+    "newDocuments_plural": "{{count}} nouveaux documents",
+    "newLinks": "{{count}} nouveau dossier lié",
+    "newLinks_plural": "{{count}} nouveaux dossiers liés",
+    "updatedDocuments": "{{count}} document mis à jour",
+    "updatedDocuments_plural": "{{count}} documents mis à jour",
+    "incompleteDocuments": "Documents à compléter",
+    "formName": "Formulaire",
+    "clientName": "Participant",
+    "createdOn": "Date de création",
+    "documentDate": "Date du document",
+    "notFollowingAnyClient": "Aucun dossier client n'est suivi",
+    "noDocumentToComplete": "Aucun document à compléter"
+  },
+  "form-shortcut": {
+    "list-title": "Liste des raccourçis",
+    "formTemplate": "Formulaire",
+    "label": "Libellé"
+  },
+  "clients":{
+    "list-title": "Liste des participants",
+    "create-title": "Création d'un nouveau participant",
+    "edit-title": "Édition d'un participant",
+    "firstName":"Prénom",
+    "lastName":"Nom",
+    "age": "{{age}} ans ({{birthDate}})",
+    "notes": "Notes",
+    "documents": "Documents",
+    "date": "Date du document",
+    "formName": "Formulaire",
+    "selectForm": "Sélectionner un formulaire",
+    "evolutionNotes": "Notes évolutives",
+    "noEvolutionNotes": "Aucune note évolutive au dossier",
+    "noDocument": "Aucun document au dossier",
+    "noImportedDocument": "Aucun document importé au dossier",
+    "filesDeleted_plural": "{{count}} fichiers effacés",
+    "filesDeleted": "Un fichier effacé",
+    "documentsDeleted_plural": "{{count}} documents effacés",
+    "documentsDeleted": "Un document effacé",
+    "noteDeleted": "Une note évolutive effacée",
+    "author": "Créé par",
+    "import-files": "Importer",
+    "files": "Fichiers importés",
+    "documentType": "Type de document",
+    "importedBy": "Importé par",
+    "manage-links": "Gérer les liens",
+    "links": "Dossiers liés",
+    "clientType": "Type de dossier"
+  },
+  "client-links": {
+    "firstName": "Prénom",
+    "lastName": "Nom",
+    "clientType": "Type de dossier",
+    "address": "Adresse",
+    "noLinks": "Aucun dossier lié",
+    "otherClient": "Dossier à lier",
+    "linkAlreadyExist": "Il existe déjà un lien avec ce dossier",
+    "titleSuffix": "Liste des dossiers liés",
+    "create": "Lier les dossiers ensemble",
+    "newLinkTitle": "Nouveau lien"
+  },
+  "client-document": {
+    "statusOptions" : {
+      "draft": "À compléter",
+      "complete": "Complété"
+    },
+    "client": "Participant",
+    "status": "Statut",
+    "newTitle": "Nouveau formulaire - {{formName}}"
+  },
+  "accounts":{
+    "list-title": "Liste des comptes utilisateurs",
+    "create-title": "Création d'un nouveau compte utilisateur",
+    "edit-title": "Édition d'un compte utilisateur",
+    "lastName": "Nom",
+    "firstName": "Prénom",
+    "userName": "Code utilisateur",
+    "email": "Courriel",
+    "password": "Mot de passe",
+    "confirmPassword": "Confirmez le mot de passe",
+    "oldPassword": "Ancien mot de passe",
+    "newPassword": "Nouveau mot de passe",
+    "changePassword": "Modifier le mot de passe",
+    "roles": "Rôles dans le système",
+    "organismRole": "Rôle dans l'organisme",
+    "errors": {
+      "passwordNotMatching": "Le mot de passe ne correspond pas"
+    }
+  },
+  "formTemplates": {
+    "list-title": "Formulaires",
+    "create-title": "Création d'un formulaire",
+    "edit-title": "Édition d'un formulaire",
+    "name": "Nom",
+    "addZone": "Ajouter une section",
+    "duplicateEnglishLabel": "Deux choix possèdent le même libellé anglais",
+    "duplicateFrenchLabel": "Deux choix possèdent le même libellé français",
+    "duplicateValue": "Deux choix possèdent la même valeur",
+    "showTemplate": "Étidion des champs",
+    "showProperties": "Édition des propriétés",
+    "clientLink": "Lien avec un dossier participant",
+    "clientLinkOptions": {
+      "mandatory": "Lié à un dossier de participant",
+      "noLink": "Aucun"
+    },
+    "documentDate": "Date du document",
+    "documentDateOptions": {
+      "useCreationDate": "Utiliser la date au moment de la création",
+      "setByUser": "Définie manuellement par l'utilisateur"
+    },
+    "documentStatus": "Statut pour les documents créés à partir de ce formulaire",
+    "documentStatusOptions": {
+      "noDraft": "Est marqué comme étant complété automatiquement lors de l'enregistrement",
+      "useDraft": "Peut être marqué 'non complété' lors de la sauvegarde pour être visible dans le tableau de bord"
+    },
+    "documentDateLabel": "Libellés pour la date du document"
+  },
+  "form-field-editor": {
+    "labelFr": "Libellé (fr)",
+    "labelEn": "Libellé (en)",
+    "name": "Nom colonne exportation",
+    "isRequired": "Est requis",
+    "inputType": "Type de texte",
+    "maxLength": "Longueur maximale",
+    "export-value": "Valeur",
+    "addChoice": "Ajouter une option",
+    "columnCount": "Nombre de colonnes",
+    "useCurrentDateAsDefaultValue": "Date du jour par défaut",
+    "minValue": "Valeur miminum",
+    "maxValue": "Valeur maximum",
+    "level": "Niveau",
+    "maxFileSize": "Taille maximale de fichier (en Ko)",
+    "addExtension": "Ajouter un type de fichier",
+    "choices": "Choix",
+    "showArchived": "Afficher les options archivées",
+    "hideArchived": "Masquer les options archivées",
+    "archived": "archivé",
+    "addColumn": "Ajouter une colonne",
+    "addLine": "Ajouter une ligne",
+    "columns": "Colonnes",
+    "lines": "Lignes"
+  },
+  "addressControl": {
+    "civicNumber": "No civique",
+    "streetName": "Rue",
+    "city": "Ville",
+    "postalCode": "Code postal",
+    "app": "App."
+  },
+  "distributionList": {
+    "title": "Liste de distribution"
+  },
+  "generateReport": {
+    "title": "Génération de rapport",
+    "fromDate": "De",
+    "toDate": "À",
+    "formName": "Formulaire",
+    "generate": "Produire"
+  },
+  "notificationTypes": {
+    "EVOLUTIVE_NOTE_CREATED": "Nouvelle",
+    "CLIENT_DOCUMENT_CREATED": "Nouveau",
+    "CLIENT_DOCUMENT_MODIFIED": "Modifié",
+    "CLIENT_FILE_CREATED": "Nouveau",
+    "CLIENT_LINK_CREATED": "Nouveau"
+  },
+  "editFileInfo": {
+    "title": "Réviser téléchargement",
+    "documentTitle": "Titre du document",
+    "documentDate": "Date du document"
+  },
+  "common": {
+    "fr":"Français",
+    "en":"Anglais",
+    "save": "Sauvegarder",
+    "cancel": "Annuler",
+    "delete": "Effacer",
+    "archive": "Archiver",
+    "restore": "Récupérer",
+    "edit": "Modifier",
+    "reset": "Réinitialiser",
+    "confirm": "Confirmer",
+    "print": "Imprimer",
+    "yes":"Oui",
+    "no":"Non",
+    "create": "Créer",
+    "confirm-delete":"L'élément sélectionné sera déplacé dans la vue Éléments archivés. Poursuivre ?",
+    "confirm-delete_plural":"Les {{count}} éléments sélectionnés seront déplacés dans la vue Éléments archivés. Poursuivre ?",
+    "filterSearch": "Recherche",
+    "saved": "Les données ont été enregistrées avec succès",
+    "archived": "{{count}} enregistrement déplacé dans les éléments archivés",
+    "archived_plural": "{{count}} enregistrements déplacés dans les éléments archivés",
+    "deleted": "{{count}} enregistrement effacé",
+    "deleted_plural": "{{count}} enregistrements effacés",
+    "restored": "{{count}} enregistrement récupéré et déplacé dans les éléments actifs",
+    "restored_plural": "{{count}} enregistrements récupérés et déplacés dans les éléments actifs",
+    "back": "Retour",
+    "apply": "Appliquer",
+    "selectViewHeader": "Éléments à afficher",
+    "archivedElements": "Archivés",
+    "activeElements": "Actifs",
+    "details": "Détails",
+    "expand": "Agrandir",
+    "collapse": "Réduire",
+    "largeur": "largeur",
+    "export": "Exporter"
+  },
+  "error-page" : {
+    "title" : "Oops!",
+    "message": "Un erreur est survenue (code : {{code}})"
+  },
+  "commonErrors" : {
+    "communicationError" : "Erreur de communication",
+    "noResponse": "Le serveur n'a pas répondu à une requête qui lui a été transmise",
+    "unexpected": "Erreur rencontrée lors de l'envoi d'un message au serveur {{message}}",
+    "invalidPhone": "Numéro de téléphone invalide",
+    "notEnoughRows": "Vous devez saisir au moins une option"
+  },
+  "sapin": {
+    "required": "Requis",
+    "invalidNumber": "Nombre invalide",
+    "invalidInteger": "Nombre entier invalide",
+    "valueNotInRange": "La valeur doit être comprise entre {{minValue}} et {{maxValue}}",
+    "invalidEmail": "Courriel invalide",
+    "invalidDate" : "Date invalide",
+    "valueShouldEqualField": "Les valeurs ne sont pas égales",
+    "valueShouldBeGteField": "Doit être supérieur ou égale à {{otherFieldLabel}}"
+  }
+}

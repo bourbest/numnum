@@ -4,18 +4,45 @@
   "private": true,
   "dependencies": {
     "@testing-library/jest-dom": "^4.2.4",
-    "@testing-library/react": "^9.4.0",
+    "@testing-library/react": "^9.5.0",
     "@testing-library/user-event": "^7.2.1",
-    "react": "^16.12.0",
-    "react-dom": "^16.12.0",
-    "react-scripts": "3.3.1"
+    "axios": "^0.21.1",
+    "bcryptjs": "^2.4.3",
+    "bootstrap": "^4.6.0",
+    "classnames": "^2.2.6",
+    "cookie-parser": "^1.4.5",
+    "corser": "^2.0.1",
+    "csrf": "^3.1.0",
+    "date-fns": "^2.19.0",
+    "i18next": "^20.2.2",
+    "i18next-xhr-backend": "^3.2.2",
+    "idb": "^5.0.8",
+    "jsonwebtoken": "^8.5.1",
+    "lodash": "^4.17.21",
+    "mongodb": "^3.6.5",
+    "node-sass": "^4.14.1",
+    "react": "^16.14.0",
+    "react-dom": "^16.14.0",
+    "react-redux": "^7.2.2",
+    "react-router-dom": "^5.2.0",
+    "react-scripts": "^4.0.3",
+    "reactstrap": "^8.9.0",
+    "redux": "^4.0.5",
+    "redux-saga": "^1.1.3",
+    "shortid": "^2.2.16"
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "server-release": "webpack --config ./tasks/webpack.server.config.js --env=production",
+    "build-server": "webpack --watch --config ./tasks/webpack.server.config.js --env=development",
+    "run-server": "nodemon ./build/backend.js --watch build/backend.js",
+    "server": "npm-run-all --parallel build-server run-server",
+    "initdb": "webpack --config ./tasks/webpack.initdb.config.js"
   },
+  "proxy": "https://localhost:443",
   "eslintConfig": {
     "extends": "react-app"
   },
@@ -30,5 +57,13 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "copy-webpack-plugin": "^5.1.2",
+    "nodemon": "^2.0.7",
+    "npm-run-all": "^4.1.5",
+    "uglifyjs-webpack-plugin": "^2.2.0",
+    "webpack-cli": "^3.3.12",
+    "webpack-node-externals": "^1.7.2"
   }
 }

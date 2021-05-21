@@ -1,0 +1,104 @@
+{
+  "browseRecipe": {
+    "searchPlaceholder": "Search...",
+    "noRecipe": "It appears your recipe book is empty. Click the Add tab below to add your first recipe.",
+    "add": "Add",
+    "all": "All"
+  },
+  "recipeForm": {
+    "name": "Name",
+    "info": "Info",
+    "servings": "Servings",
+    "prepTime": "Preparation time (minutes)",
+    "cookTime": "Cooking time (minutes)",
+    "ingredients": "Ingredients",
+    "ingredientExplained": "Input each ingredient on a separate line. Add precision or comment after a coma, like so:",
+    "ingredientExample": "250 ml of carrots, thinly sliced",
+    "steps": "Steps",
+    "stepsExplained": "Input each step on a separate line."
+  },
+  "planMeals": {
+    "select": "Select",
+    "noRecipe": "It appears your recipe book is empty.",
+    "noMatch": "No recipe match that name and filters"
+  },
+  "planMealPopup": {
+    "title": "Plan recipe",
+    "selectMoment": "Plan this recipe for",
+    "addToPlanning": "Add to planning",
+    "updatePlanning": "Update planning",
+    "addAndPlanLeftovers": "Add and plan leftovers usage"
+  },
+  "viewRecipe": {
+    "cook": "Cook:",
+    "prepare": "Prepare:",
+    "minute": "{{count}} minute",
+    "minute_plural": "{{count}} minutes",
+    "servings": "{{count}} serving",
+    "servings_plural": "{{count}} servings"
+  },
+  "appModules": {
+    "recipeBook": {
+      "title": "Recipe book",
+      "desc": "Some quick example text to build on the card title and make up the bulk of the card",
+      "manage": "Manage recipes",
+      "add": "Add recipe"
+    },
+    "mealsPlanning": {
+      "title": "Meals planning",
+      "desc": "Some quick example text to build on the card title and make up the bulk of the card",
+      "continue": "Edit plan",
+      "new": "Create a new plan"
+    },
+    "groceryList": {
+      "title": "Grocery list",
+      "desc": "Some quick example text to build on the card title and make up the bulk of the card",
+      "continue": "Edit list",
+      "new": "Create a new list"
+    }
+  },
+  "createPlan": {
+    "explain": "In this step, select the first day and the number of days you want to plan for. In the next step, you'll be able to select recipes and quickly assign it a day.",
+    "startDay": "Select first day",
+    "duration": "Number of days",
+    "warning": "Creating a new plan will erase the existing one."
+  },
+  "recipeCreationMethods": {
+    "blank": {
+      "title": "Create from blank", 
+      "action": "Create",
+      "desc": "Fill in a form to add a recipe to your book."
+    },
+    "url": {
+      "title": "Import from a Web page", 
+      "action": "Import Web page", 
+      "desc": "Paste the address of a page and have the app parse and import the recipe into your book."
+    },
+    "photo": {
+      "title": "Take a picture", 
+      "action": "Take picture", 
+      "desc": "Use your device to take a picture of the recipe and use the app to import relevant parts."
+    },
+    "picture": {
+      "title": "Use a picture", 
+      "action": "Use picture", 
+      "desc": "Use a picture already on your device and use the app to import relevant parts."
+    }
+  },
+  "common": {
+    "edit": "Edit",
+    "create": "Create",
+    "cancel": "Cancel",
+    "delete": "Delete",
+    "share": "Share",
+    "love": "Love",
+    "filter": "Filter",
+    "organize": "Organize"
+  },
+  "sapin": {
+    "required": "Required",
+    "invalidNumber": "Invalid number",
+    "invalidInteger": "Must be an integer",
+    "valueShouldBeGt" : "Must greater than {{threshold}}"
+  }
+}

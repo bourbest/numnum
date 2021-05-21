@@ -1,0 +1,142 @@
+@import "_variables";
+
+
+@import "fontello/css/fontello";
+@import "~bootstrap/scss/functions";
+@import "~bootstrap/scss/variables";
+
+@import "~bootstrap/scss/mixins";
+@import "~bootstrap/scss/root";
+@import "~bootstrap/scss/reboot";
+@import "~bootstrap/scss/type";
+@import "~bootstrap/scss/images";
+@import "~bootstrap/scss/code";
+@import "~bootstrap/scss/grid";
+@import "~bootstrap/scss/tables";
+@import "~bootstrap/scss/forms";
+@import "~bootstrap/scss/buttons";
+@import "~bootstrap/scss/transitions";
+@import "~bootstrap/scss/dropdown";
+@import "~bootstrap/scss/button-group";
+@import "~bootstrap/scss/input-group";
+@import "~bootstrap/scss/custom-forms";
+@import "~bootstrap/scss/nav";
+@import "~bootstrap/scss/navbar";
+@import "~bootstrap/scss/card";
+@import "~bootstrap/scss/breadcrumb";
+@import "~bootstrap/scss/pagination";
+@import "~bootstrap/scss/badge";
+@import "~bootstrap/scss/jumbotron";
+@import "~bootstrap/scss/alert";
+@import "~bootstrap/scss/progress";
+@import "~bootstrap/scss/media";
+@import "~bootstrap/scss/list-group";
+@import "~bootstrap/scss/close";
+@import "~bootstrap/scss/toasts";
+@import "~bootstrap/scss/modal";
+//@import "~bootstrap/scss/tooltip";
+//@import "~bootstrap/scss/popover";
+//@import "~bootstrap/scss/carousel";
+//@import "~bootstrap/scss/spinners";
+@import "~bootstrap/scss/utilities";
+//@import "~bootstrap/scss/print";
+
+
+@import "full-page-tabs.scss";
+@import "list-tiles.scss";
+@import "calendar.scss";
+
+.clickable {
+  cursor: pointer;
+  color: $success;
+}
+
+.pointer {
+  cursor: pointer;
+}
+
+.bordered {
+  border-width: 1px;
+  border-color: $primary;
+  border-style: solid;
+}
+
+textarea {
+  min-height: 60pt !important;
+  padding: 0.5rem;
+}
+
+html, body {
+  height: 100%;
+  overflow-x: hidden;
+}
+
+.recipe-cover-image {
+  width: 425px;
+  height: 240px;
+}
+
+.button-icon {
+  width: 60px;
+  max-width: 60px;
+  height: 60px;
+  display: block;
+  color: $success;
+}
+
+.large-icon {
+  font-size: larger;
+}
+
+.list-darker-on-even li:nth-child(even) {
+  background-color: $gray-900;
+}
+
+.dark-grey-background {
+  background-color: $gray-800;
+}
+
+.dark2 {
+  background-color: $gray-900;
+}
+
+.d-flex-column {
+  display: flex;
+  flex-direction: column;
+}
+
+.d-flex-row {
+  display: flex;
+  flex-direction: row;
+}
+
+.flex-grow {
+  flex: 1;
+}
+
+.align-items-center {
+   align-items: center
+}
+.step-index {
+  width: 30px;
+  max-width: 30px;
+  min-width: 30px;
+  font-weight: bold;
+  font-size: xx-large;
+  text-align: center;
+}
+
+.step-description {
+  flex-grow: 0;
+  padding-left: 20px;
+}
+
+button.checkbox {
+  background-color: transparent;
+  border: 0;
+  color: white;
+}
+
+button.checkbox .check {
+  width: 30px;
+}

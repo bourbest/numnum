@@ -1,26 +1,29 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, {useState, useEffect, Fragment} from 'react'
+import {BrowserRouter as Router} from 'react-router-dom'
+import Routes from './routes'
+import {setupDatabase} from './data/indexedDb'
 
-function App() {
+export default function App() {
+  const [isReady, setReady] = useState(false)
+  const {dbError, setDbError} = useState(null)
+
+  useEffect( () => {
+    try {
+      setupDatabase().then(db => {
+        setReady(true)
+      })
+    } catch (err) {
+      setDbError(err)
+    }
+  }, [setDbError])
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    <Fragment>
+      <Router className="h-100 router">
+        {isReady && <Routes className="h-100 routes" />}
+      </Router>
+      {!isReady && !dbError && <div>Loading...</div>}
+      {dbError && <div>{dbError}</div>}
+    </Fragment>
+  )
 }
-
-export default App;

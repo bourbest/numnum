@@ -1,0 +1,85 @@
+$top-nav-height: 38px;
+$bottom-nav-height: 60px;
+$transition-speed: 0.3s;
+
+.top-nav-bar {
+  height: $top-nav-height;
+  width: 100%;
+  display:flex; 
+  flex-flow:row wrap;
+  top: 0;
+  left: 0;
+  background-color: $gray-900;
+  border-bottom: solid 1px $gray-800;
+  box-sizing: border-box;
+}
+
+.full-page-with-tabs {
+  height: calc(100% - #{$top-nav-height});
+  width: 100%;
+  overflow-y: hidden;
+  overflow-x: hidden;
+}
+
+.roll-up-tab {
+  height: calc(100% - #{$top-nav-height});
+  width: 100%;
+  max-width: 100%;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  position: fixed;
+  top: 100%;
+  left:0;
+  z-index: 100;
+  transition: $transition-speed;
+  background-color: $gray-800;
+}
+
+.roll-up-tab.visible {
+  top: $top-nav-height;
+  transition: $transition-speed;
+}
+
+.full-page-tabs {
+  height: calc(100% - #{$bottom-nav-height});
+  overflow-x: hidden;
+  overflow-y: hidden;
+}
+
+.full-page-tab {
+  height: calc(100% - #{$bottom-nav-height} - #{$top-nav-height});
+  width: 100%;
+  max-width: 100%;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  position: fixed;
+  top: $top-nav-height;
+}
+
+.full-page-tab.hidden-left {
+  left: -100%;
+  transition: $transition-speed;
+}
+
+.full-page-tab.hidden-right {
+  left: 100%;
+  transition: $transition-speed;
+}
+
+.full-page-tab.active {
+  left: 0;
+  transition: $transition-speed;
+}
+
+.full-page-tab-navigation {
+  height: $bottom-nav-height;
+  width: 100%;
+  margin: 0;
+  border-top: solid 1px $gray-700;
+}
+
+.full-page-tab-navigation .nav .nav-item.active {
+  border-bottom: solid 4px $link-color;
+  box-sizing: border-box;
+}
+
