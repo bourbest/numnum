@@ -21,7 +21,7 @@ export default function RecipeTile (props) {
         </div>
         <div className="d-flex align-content-end justify-content-end mt-2">
           {actions && actions.map( action => (
-              <Icon name={action.icon} className="large-icon p-2" data-id={recipe.id} onClick={action.onClick} key={action.icon} />
+              <Icon name={action.icon} className="large-icon p-2" data-id={props.id} onClick={action.onClick} key={action.icon} />
           ))}
         </div>
       </div>
@@ -30,6 +30,7 @@ export default function RecipeTile (props) {
 }
 
 RecipeTile.propTypes = {
+  id: PropTypes.string,
   recipe: PropTypes.object.isRequired,
   iconOnImage: PropTypes.string,
   iconOnImageClass: PropTypes.string,

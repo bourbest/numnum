@@ -1,4 +1,4 @@
-import React, {useState, useEffect, Fragment} from "react"
+import {useState, useEffect, Fragment} from "react"
 import {useHistory} from 'react-router-dom'
 import {useDebounce, useFilter} from '../hooks'
 import {useUrlParam, useIntUrlParam, useDisplayMode, useEntityInUrl} from '../locationHooks'
@@ -14,19 +14,21 @@ import {mealSchema} from '../../modules/plan/plan-schema'
 import RecipeWithActions from './components/RecipeWithActions'
 import PlanMealPopup from './components/PlanMealPopup'
 import {NavBar, FullPageTabs, FullPageTab, SearchBox} from '../components'
+import {PlanOrganizer} from "./components/PlanOrganizer"
 
 export default function EditPlanPage () {
   const [recipesById, setRecipes] = useState(null)
+  const [mealMomentsById, setMealMoments] = useState(null)
   const [plan, setPlan] = useState(null)
   const history = useHistory()
   const displayMode = useDisplayMode()
  
-  const [mealMoments, setMealMoments] = useState(null)
-  const [meal, showPlanMealPopup] = useEntityInUrl(mealSchema)
+
+  const [editedMeal, showPlanMealPopup] = useEntityInUrl(mealSchema)
   const [activeTabIndex, setActiveTabIndex] = useIntUrlParam('tab', 0)
   const [filterValue, setFilter] = useUrlParam('filterValue', '')
   
-  const isLoading = !plan || !recipesById || !mealMoments
+  const isLoading = !plan || !recipesById || !mealMomentsById
 
   // initial load of recipes
   useEffect( function () { getRecipes().then(setRecipes) }, [])
@@ -39,48 +41,71 @@ export default function EditPlanPage () {
 
   const mealsByRecipeId = plan ? groupBy(plan.meals, 'recipeId') : {}
 
-  const handleAddRemoveMeal = function (event) {
+  const removeAllMealsWithRecipeId = function (event) {
     const newPlan = {...plan}
     const recipeId = event.target.dataset.id
-    if (mealsByRecipeId[recipeId]) {
-      newPlan.meals = filter(newPlan.meals, meal => meal.recipeId !== recipeId)
-    } else {
-      const newMeal = createDefaultMealForRecipe (recipesById[recipeId])
-      newPlan.meals = [...newPlan.meals, newMeal]
-    }
+    newPlan.meals = filter(newPlan.meals, meal => meal.recipeId !== recipeId)
     setPlan(newPlan)
   }
 
-  const handleRecipePlanned = function () {
+  const addMealWithoutDate = function (event) {
     const newPlan = {...plan}
-    if (meal.id !== undefined) {
-      newPlan.meals = filter(newPlan.meals, m => m.id !== meal.id)
-    } else {
-      meal.id = shortid.generate()
-    }
-    newPlan.meals = [...newPlan.meals, meal]
+    const recipeId = event.target.dataset.id
+    const newMeal = createDefaultMealForRecipe (recipesById[recipeId])
+    newPlan.meals = [...newPlan.meals, newMeal]
     setPlan(newPlan)
-    showPlanMealPopup(null)
+  }
+
+  const handleMealRemoved = function (event) {
+    const newPlan = {...plan}
+    const mealId = event.target.dataset.id
+    newPlan.meals = filter(newPlan.meals, meal => meal.id !== mealId)
+    setPlan(newPlan)
+  }
+
+  const saveMeal = function () {
+    const newPlan = {...plan}
+    if (editedMeal.id !== undefined) {
+      newPlan.meals = filter(newPlan.meals, m => m.id !== editedMeal.id)
+    } else {
+      editedMeal.id = shortid.generate()
+    }
+    newPlan.meals = [...newPlan.meals, editedMeal]
+    setPlan(newPlan)
+  }
+  const handleMealSaved = function () {
+    saveMeal()
+    history.goBack()
+  }
+
+  const handleSaveMealAndPlanLeftovers = function() {
+    saveMeal()
+    const targetMeal = createDefaultMealForRecipe(recipesById[editedMeal.recipeId])
+    targetMeal.id = null // not for saving yet
+    targetMeal.useLeftovers = true
+    showPlanMealPopup(targetMeal)
   }
 
   const handlePlanRecipe = function (event) {
     const recipeId = event.target.dataset.id
-    let editedMeal = find(plan.meals, meal => meal.recipeId === recipeId)
-    if (!editedMeal) {
-      editedMeal = createDefaultMealForRecipe (recipesById[recipeId])
-      editedMeal.id = null // not for saving yet
+    let targetMeal = find(plan.meals, meal => meal.recipeId === recipeId)
+    if (!targetMeal) {
+      targetMeal = createDefaultMealForRecipe (recipesById[recipeId])
+      targetMeal.id = null // not for saving yet
     }
-    showPlanMealPopup(editedMeal)
+    showPlanMealPopup(targetMeal, false)
+  }
+
+  const handleEditMeal = function (event) {
+    const mealId = event.target.dataset.id
+    let targetMeal = find(plan.meals, meal => meal.id === mealId)
+    showPlanMealPopup(targetMeal)
   }
 
   const actions = {
-    delete: {icon: 'minus', onClick: handleAddRemoveMeal},
-    add: {icon: 'plus', onClick: handleAddRemoveMeal},
+    delete: {icon: 'minus', onClick: removeAllMealsWithRecipeId},
+    add: {icon: 'plus', onClick: addMealWithoutDate},
     plan: {icon: 'calendar', onClick: handlePlanRecipe}
-  }
-
-  const onCancel = function () {
-    history.goBack()
   }
 
   return (
@@ -92,13 +117,14 @@ export default function EditPlanPage () {
       />
       {!isLoading &&
       <PlanMealPopup
-        recipe={meal ? recipesById[meal.recipeId] : null}
-        visible={meal !== null}
-        meal={meal}
-        mealMoments={mealMoments}
+        recipe={editedMeal ? recipesById[editedMeal.recipeId] : null}
+        visible={editedMeal !== null}
+        meal={editedMeal}
+        mealMomentsById={mealMomentsById}
         onMealChanged={showPlanMealPopup}
-        onCancel={onCancel}
-        onSaveMeal={handleRecipePlanned}
+        onCancel={() => history.goBack()}
+        onSaveMeal={handleMealSaved}
+        onSaveAndPlanLeftovers={handleSaveMealAndPlanLeftovers}
       />}
 
       {isLoading && <div>{translate('common.loading')}</div>}
@@ -138,7 +164,14 @@ export default function EditPlanPage () {
             TODO
         </FullPageTab>
         <FullPageTab icon="clipboard" label={translate('common.organize')}>
-          TODO
+          <PlanOrganizer
+            recipesById={recipesById}
+            mealMomentsById={mealMomentsById}
+            meals={plan.meals}
+            displayMode={displayMode.value}
+            onEditMeal={handleEditMeal}
+            onRemoveMeal={handleMealRemoved}
+          />
         </FullPageTab>
       </FullPageTabs>
       }

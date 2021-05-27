@@ -26,12 +26,12 @@ export default function RecipeListItem (props) {
             <div className="recipe-list-item-info">Prepare: {recipe.preparationTime} mins</div>
             <div className="recipe-list-item-info">Cook : {recipe.cookingTime} mins</div>
             {otherInfo && otherInfo.map( info => (
-              <div className="recipe-list-item-info" key={info.label}>{info.value}</div>
+              <div className="recipe-list-item-info" key={info.label}>{info.label}: {info.value}</div>
             ))}
           </div>
           <div>
             {actions && actions.map( action => (
-              <Icon name={action.icon} className="large-icon p-2" data-id={recipe.id} onClick={action.onClick} key={action.icon} />
+              <Icon name={action.icon} className="large-icon p-2" data-id={props.id} onClick={action.onClick} key={action.icon} />
             ))}
           </div>
         </div>
@@ -41,9 +41,10 @@ export default function RecipeListItem (props) {
 }
 
 RecipeListItem.propTypes = {
+  id: PropTypes.string,
   recipe: PropTypes.object.isRequired,
   iconOnImage: PropTypes.string,
   iconOnImageClass: PropTypes.string,
   actions: PropTypes.arrayOf(PropTypes.object),
-  otherInfo: PropTypes.arrayOf(PropTypes.object)  
+  otherInfo: PropTypes.arrayOf(PropTypes.object)
 }

@@ -1,9 +1,10 @@
 export const getMealMoments = function () {
-  const ret = [
-    {id: 'bf', label: 'Breakfast'},
-    {id: 'lu', label: 'Lunch'},
-    {id: 'di', label: 'Diner'},
-    {id: 'sn', label: 'Snack'},
-  ]
+  const ret = {
+    bf: {id: 'bf', label: 'Breakfast', order: 0},
+    lu: {id: 'lu', label: 'Lunch', order: 1},
+    sn: {id: 'sn', label: 'Snack', order: 2},
+    di: {id: 'di', label: 'Diner', order: 3}
+  }
+
   return { then:  function (p) { p(ret)} }
 }

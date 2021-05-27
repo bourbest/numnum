@@ -50,7 +50,7 @@ export default function BrowseRecipesPage (props) {
           <div className={displayMode.listClass}>
             {map(filteredRecipes, recipe => (
               <div className="recipe-list-item" key={recipe.id}>
-                <RecipeTag recipe={recipe} />
+                <RecipeTag recipe={recipe} id={recipe.id} />
               </div>  
             ))}
           </div>

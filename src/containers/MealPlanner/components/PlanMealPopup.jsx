@@ -1,11 +1,13 @@
 import React, {Fragment} from 'react'
 import PropTypes from 'prop-types'
+import {sortBy} from 'lodash'
 import {Icon, Calendar, RecipeListItem, Checkbox} from '../../components'
 import {useIncrementField, useUpdateField, useFieldToggler} from '../../formHooks'
 import {translate} from '../../../locales/translate'
 
-export default function PlanMealPopup ({recipe, meal, mealMoments, onCancel, visible, onMealChanged, onSaveMeal, onSaveAndPlanLeftovers}) {
+export default function PlanMealPopup ({recipe, meal, mealMomentsById, onCancel, visible, onMealChanged, onSaveMeal, onSaveAndPlanLeftovers}) {
   const classes = visible ? 'visible' : ''
+  const sortedMoments = sortBy(mealMomentsById, 'order')
   const handleFieldIncremented = useIncrementField(meal, onMealChanged)
   const handleFieldUpdated = useUpdateField(meal, onMealChanged)
   const handleFieldToggled = useFieldToggler(meal, onMealChanged)
@@ -15,7 +17,7 @@ export default function PlanMealPopup ({recipe, meal, mealMoments, onCancel, vis
       {visible && 
       <Fragment>
         <h3 className="w-100 text-center">{translate('planMealPopup.title')}</h3>
-        {recipe !== null && <RecipeListItem recipe={recipe} />}
+        {recipe !== null && <RecipeListItem recipe={recipe} id={recipe.id} />}
         <div className="p-2 mt-1">
           <div className="d-flex justify-content-center pb-2">
             {visible && <Calendar
@@ -28,12 +30,12 @@ export default function PlanMealPopup ({recipe, meal, mealMoments, onCancel, vis
           <div className="mt-2">
             <label>{translate('planMealPopup.selectMoment')}</label>
             <div>
-              {mealMoments.map (moment => {
-                const classNames = moment.id === meal.mealMoment
+              {sortedMoments.map (moment => {
+                const classNames = moment.id === meal.mealMomentId
                   ? "btn btn-primary m-2"
                   : "btn btn-outline-primary m-2"
                 return (
-                <button type="button" className={classNames} value={moment.id} key={moment.id} name="mealMoment" onClick={handleFieldUpdated}>
+                <button type="button" className={classNames} value={moment.id} key={moment.id} name="mealMomentId" onClick={handleFieldUpdated}>
                   {moment.label}
                 </button>)
               })}
@@ -71,7 +73,7 @@ export default function PlanMealPopup ({recipe, meal, mealMoments, onCancel, vis
 PlanMealPopup.propTypes = {
   recipe: PropTypes.object,
   meal: PropTypes.object,
-  mealMoments: PropTypes.array.isRequired,
+  mealMomentsById: PropTypes.object.isRequired,
   visible: PropTypes.bool.isRequired,
   onMealChanged: PropTypes.func.isRequired,
   onSaveMeal: PropTypes.func.isRequired,

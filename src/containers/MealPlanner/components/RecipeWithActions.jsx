@@ -13,6 +13,7 @@ export default function RecipeWithActions (props) {
     : [props.actions.add, props.actions.plan]
 
   return (<RecipeTag
+    id={props.recipe.id}
     recipe={props.recipe}
     actions={actions}
     iconOnImage={iconOnImage}

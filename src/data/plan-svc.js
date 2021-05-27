@@ -19,7 +19,7 @@ export const createDefaultMealForRecipe = function (recipe) {
     recipeId: recipe.id,
     servings: recipe.servings,
     mealDate: null,
-    mealMoment: null,
+    mealMomentId: null,
     useLeftovers: false
   }
 }

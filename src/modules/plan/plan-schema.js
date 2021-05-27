@@ -4,7 +4,7 @@ export const mealSchema = new Schema({
   id: string,
   recipeId: string(required),
   mealDate: string(isOfTypeDate),
-  mealMoment: string,
+  mealMomentId: string,
   useLeftovers: boolean(required),
   servings: number([isInteger, isGt(0), required])
 })

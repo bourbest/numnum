@@ -21,7 +21,7 @@ export default function EditRecipesPage (props) {
   // initial load of recipes
   useEffect( function () {
     getRecipeById(recipeId).then(setFormValues)
-  }, [recipeId])
+  }, [recipeId, setFormValues])
   
 
   return (

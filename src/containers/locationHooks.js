@@ -2,7 +2,7 @@ import {useLocation, useHistory} from 'react-router-dom'
 import {forOwn, isEmpty} from 'lodash'
 import {transform} from '../sapin'
 
-const updateUrlWithObjectProps = function(location, history, obj, entitySchema) {
+const updateUrlWithObjectProps = function(location, history, obj, entitySchema, replace = true) {
   const search = new URLSearchParams(location.search)
   forOwn(entitySchema.schema, function(value, key) {
     if (obj && obj[key] !== null && obj[key] !== undefined) {
@@ -12,7 +12,11 @@ const updateUrlWithObjectProps = function(location, history, obj, entitySchema) 
     }
   })
   const newUrl = `${location.pathname}?${search.toString()}`
-  history.replace(newUrl)
+  if (replace) {
+    history.replace(newUrl)
+  } else {
+    history.push(newUrl)
+  }
 }
 
 const getEntityFromUrl = function(location, schema) {
@@ -32,8 +36,8 @@ export function useEntityInUrl(entitySchema) {
   const history = useHistory()
   const entityFromUrl = getEntityFromUrl(location, entitySchema)
 
-  return [entityFromUrl, function (obj) {
-    updateUrlWithObjectProps(location, history, obj, entitySchema)
+  return [entityFromUrl, function (obj, replace = true) {
+    updateUrlWithObjectProps(location, history, obj, entitySchema, replace)
   }]
 }
 
