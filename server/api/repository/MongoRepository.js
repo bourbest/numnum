@@ -114,37 +114,19 @@ export function insert (entity) {
 
 export function insertMany (entities) {
   const data = this.prepareForDatabase(entities)
-  return this.collection.insertMany(entities)
+  return this.collection.insertMany(data)
 }
 
-export function update (entity) {
+export function update (entity, filters = {}) {
   const data = this.prepareForDatabase(entity)
-  const filters = {_id: data._id}
-  return this.collection.replaceOne(filters, data)
+  const queryFilters = {...filters, _id: data._id}
+  return this.collection.replaceOne(queryFilters, data)
 }
 
-export function upsert (entity) {
+export function upsert (entity, filters = {}) {
   const data = this.prepareForDatabase(entity)
-  const filters = {_id: data.id}
-  return this.collection.replaceOne(filters, data, {upsert: true})
-}
-
-export function archive (ids) {
-  const filters = {_id: {$in: ids}}
-  const update = {
-    $set: {isArchived: true}
-  }
-
-  return this.collection.updateMany(filters, update)
-}
-
-export function restore (ids) {
-  const filters = {_id: {$in: ids}}
-  const update = {
-    $set: {isArchived: false}
-  }
-
-  return this.collection.updateMany(filters, update)
+  const queryFilters = {...filters, _id: data._id}
+  return this.collection.replaceOne(queryFilters, data, {upsert: true})
 }
 
 export function deleteByIds (ids) {
@@ -169,8 +151,6 @@ export const createBaseRepository = (collectionName) => {
   BaseRepository.prototype.update = update
   BaseRepository.prototype.upsert = upsert
   BaseRepository.prototype.findByIds = findByIds
-  BaseRepository.prototype.archive = archive
-  BaseRepository.prototype.restore = restore
   BaseRepository.prototype.delete = deleteByIds
   BaseRepository.prototype.deleteByFilters = deleteByFilters
   BaseRepository.prototype.convertFilters = identity

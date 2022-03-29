@@ -9,3 +9,9 @@ export function firstLetter (str) {
 export function formatDate (date) {
   return date ? date.toISOString().slice(0, 10) : ''
 }
+
+export function getDayNameWithDate (date) {
+  const day = new Date(date)
+  
+  return day.toLocaleString('default', {  weekday: 'long', month: 'long', day: 'numeric', timeZone: 'UTC' });
+}

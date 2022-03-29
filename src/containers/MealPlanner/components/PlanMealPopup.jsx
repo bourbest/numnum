@@ -17,7 +17,7 @@ export default function PlanMealPopup ({recipe, meal, mealMomentsById, onCancel,
       {visible && 
       <Fragment>
         <h3 className="w-100 text-center">{translate('planMealPopup.title')}</h3>
-        {recipe !== null && <RecipeListItem recipe={recipe} id={recipe.id} />}
+        {recipe !== null && <RecipeListItem recipe={recipe} />}
         <div className="p-2 mt-1">
           <div className="d-flex justify-content-center pb-2">
             {visible && <Calendar
@@ -57,11 +57,6 @@ export default function PlanMealPopup ({recipe, meal, mealMomentsById, onCancel,
             <button className="btn btn-primary mb-1" type="button" onClick={onSaveMeal}>
               {meal.id === undefined ? translate('planMealPopup.addToPlanning') : translate('planMealPopup.updatePlanning')}
             </button>
-            {onSaveAndPlanLeftovers &&
-              <button className="btn btn-primary mb-1" type="button" onClick={onSaveAndPlanLeftovers}>
-                {translate('planMealPopup.addAndPlanLeftovers')}
-              </button>
-            }
             <button className="btn btn-light mb-1" type="button" onClick={onCancel}>{translate('common.cancel')}</button>
           </div>
         </div>
@@ -77,6 +72,5 @@ PlanMealPopup.propTypes = {
   visible: PropTypes.bool.isRequired,
   onMealChanged: PropTypes.func.isRequired,
   onSaveMeal: PropTypes.func.isRequired,
-  onSaveAndPlanLeftovers: PropTypes.func,
   onCancel: PropTypes.func.isRequired
 }

@@ -1,8 +1,7 @@
 // const {createRevision} = require('./common')
 
-/*
 const bcrypt = require('bcryptjs')
-const fs = require('fs')
+//const fs = require('fs')
 
 function createAdminUser () {
   return bcrypt.hash('admin', 8)
@@ -10,10 +9,8 @@ function createAdminUser () {
       return {
         username: 'admin',
         passwordHash,
-        fullName: 'Administrateur',
         firstName: 'Administrateur',
         lastName: 'admin',
-        isArchived: false,
         createdOn: new Date(),
         modifiedOn: new Date()
       }
@@ -38,12 +35,13 @@ function initializeAdminUser (db) {
       return db
     })
 }
-*/
 
 function createIndexes (db) {
   console.log('creating index')
   const promises = [
-    db.createIndex('UserAccount', 'username', {unique: true})
+    db.createIndex('UserAccount', 'username', {unique: true}),
+    db.createIndex('Recipe', 'ownerId', {unique: true}),
+    db.createIndex('Ingredient', 'ownerId', {unique: true}),
   ]
 
   return Promise.all(promises)
@@ -56,6 +54,7 @@ function createIndexes (db) {
 module.exports = function (db) {
   console.log('*********** Initial creation *************')
   return createIndexes(db)
+    .then(initializeAdminUser(db))
     // .then(createRevision(1, 'Initial creation'))
     .then(() => {
       console.log('--------- Initial creation completed ---------------')

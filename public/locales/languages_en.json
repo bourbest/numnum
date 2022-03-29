@@ -26,8 +26,7 @@
     "title": "Plan recipe",
     "selectMoment": "Plan this recipe for",
     "addToPlanning": "Add to planning",
-    "updatePlanning": "Update planning",
-    "addAndPlanLeftovers": "Add and plan leftovers usage"
+    "updatePlanning": "Update planning"
   },
   "viewRecipe": {
     "cook": "Cook:",

@@ -4,14 +4,14 @@ const fs = require('fs')
 const bluebird = require('bluebird')
 const createDb = require('./revisions/createdb')
 
-getDbConfig = function () {
+const getDbConfig = function () {
   const configPath = './server.config.json'
   const config = JSON.parse(fs.readFileSync(configPath, 'utf8'))
   console.log('db config', config.db)
   return config.db
 }
 
-getRevision = function (db) {
+const getRevision = function (db) {
   const revRepo = db.collection('DbRevision')
 
   return revRepo.find({}).toArray()

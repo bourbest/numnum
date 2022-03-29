@@ -1,13 +1,15 @@
 # numnum
+
 Receipe book
+
 - Ingrédients vide bug
 - ingrédient sans qte bug
 - dans la version computed des ingrédients, retirer les pluriels
+  -> mettre à jour la prop otherNames de Ingredient pour retrouver les ingrédients qui matchent
 
 plan meals
 
 make grocery list
-
 
 Trucs à tester dans les ingrédients
 1 tasse de ...
@@ -24,4 +26,3 @@ pincée
 1/3 lbs
 
 penser aux sections dans une recette
-

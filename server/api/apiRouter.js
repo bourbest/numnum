@@ -1,7 +1,6 @@
 import express from 'express'
 import cookieParser from 'cookie-parser'
 import corser from 'corser'
-import bodyParser from 'body-parser'
 
 import {mustBeAuthenticated, injectGlobals, logger, checkCsrf, loadUser} from './middlewares'
 import {COOKIE_NAMES} from '../config/const'
@@ -18,7 +17,7 @@ function createApiRouter (context, config, database) {
   apiRouter.use(corser.create({
     origin: process.env.NODE_ENV === 'production' ? ['numnum.com'] : ['localhost:3000']
   }))
-  apiRouter.use(bodyParser.json())
+  apiRouter.use(express.json())
   apiRouter.use(injectGlobals(globals))
 
   apiRouter.use(cookieParser())

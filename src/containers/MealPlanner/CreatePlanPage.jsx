@@ -1,7 +1,7 @@
 import React, {useState, useEffect, Fragment} from "react"
 import {useHistory} from 'react-router-dom'
 
-import {NavBar, Instruction, FieldError} from '../components'
+import {NavBar, Instruction} from '../components'
 
 import {getPlan, getEmptyPlan, savePlan} from '../../data/plan-svc'
 import {validatePlan} from '../../modules/plan/plan-schema'
@@ -55,7 +55,6 @@ export default function CreatePlanPage (props) {
                 className="form-control" name="duration" value={newPlan.duration}
                 onChange={handleChange} min="1"
               />
-              <FieldError errors={errors} name="duration" />
             </div>
           </form>
           <div className="d-flex justify-content-end w-100">

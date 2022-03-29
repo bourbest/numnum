@@ -1,10 +1,10 @@
 import React, {useState, useEffect, Fragment} from "react"
 import {useHistory} from 'react-router-dom'
 import {useDebounce, useFilter} from '../hooks'
-import {useDisplayMode, useIntUrlParam, useUrlParam} from '../locationHooks'
+import {useIntUrlParam, useUrlParam} from '../locationHooks'
 import {getRecipes} from '../../data/recipe-svc'
 import {map, isEmpty} from 'lodash'
-import {RecipeListItem, RecipeTile, NavBar, FullPageTab, FullPageTabs, SearchBox, ModuleCard} from '../components'
+import {RecipeListItem, NavBar, FullPageTab, FullPageTabs, SearchBox, ModuleCard} from '../components'
 import CreationMethods from './create-recipe-methods'
 import {translate} from '../../locales/translate'
 
@@ -13,7 +13,6 @@ export default function BrowseRecipesPage (props) {
   const [filterValue, setFilter] = useUrlParam('filterValue', '')
   const [recipes, setRecipes] = useState({})
   const history = useHistory()
-  const displayMode = useDisplayMode()
   const [activeTabIndex, setActiveTabIndex] = useIntUrlParam('tab', 0)
 
   // initial load of recipes
@@ -25,17 +24,9 @@ export default function BrowseRecipesPage (props) {
   const debouncedFilter = useDebounce(filterValue, 300)
   const filteredRecipes = useFilter(recipes, debouncedFilter)
 
-  const RecipeTag = displayMode.value === 'large'
-    ? RecipeTile
-    : RecipeListItem
-
   return (
     <Fragment>
-      <NavBar
-        onBack={() => history.goBack()}
-        browseDisplayIcon={activeTabIndex === 0 ? displayMode.toggleIcon : null}
-        onBrowseDisplayToggle={displayMode.toggle}
-      />
+      <NavBar onBack={() => history.goBack()} />
       <FullPageTabs activeTabIndex={activeTabIndex} onTabChanged={setActiveTabIndex}>
         <FullPageTab icon="search" label={translate('browseRecipe.all')}>
           <div className="container p-2">
@@ -47,10 +38,10 @@ export default function BrowseRecipesPage (props) {
               {translate('browseRecipe.noRecipe')}
             </div>
           }
-          <div className={displayMode.listClass}>
+          <div className="recipe-list">
             {map(filteredRecipes, recipe => (
               <div className="recipe-list-item" key={recipe.id}>
-                <RecipeTag recipe={recipe} id={recipe.id} />
+                <RecipeListItem recipe={recipe} id={recipe.id} />
               </div>  
             ))}
           </div>
